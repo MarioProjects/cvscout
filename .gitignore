@@ -200,7 +200,7 @@ tmp/*
 !tmp/.gitkeep
 
 # dataset
-data/
+# data/
 
 # other data
 especificacion.pdf

@@ -58,3 +58,56 @@ pip install dist/cvscout-0.1-py3-none-any.whl
 ```
 
 Now we can create a new python script and import the package to test it.
+
+## Publishing the package to PyPi
+
+The first we will need is to create an account in PyPi. Next we can run this command:
+
+```bash
+twine upload dist/*
+```
+
+This will asks for credentials which we can enter into the terminal directly or provide them as an environment variable, for example for automation of CI/CD pipelines.
+
+```bash
+export TWINE_USERNAME=__token__
+export TWINE_PASSWORD=pypi-xxxx
+```
+
+Done!
+
+### Using the README.md as the package description
+
+If we access to the published package in PyPi, we will see that the description is empty.
+Let's fix that by using the README.md file as the package description.
+
+Go to the `setup.py` file and modify it:
+
+```python
+from setuptools import setup, find_packages
+
+with open("README.md", "r") as f:
+    description = f.read()
+
+setup(
+    name="cvscout",
+    version="0.2",
+    packages=find_packages(),
+    install_requires=[
+        "openai==1.30.1",
+        "langchain==0.2.0",
+        "pydantic==2.7.1",
+    ],
+    long_description=description,
+    long_description_content_type="text/markdown",
+)
+```
+
+Now we can update the package in PyPi:
+
+```bash
+python setup.py sdist bdist_wheel
+twine upload dist/*
+```
+
+Done!
