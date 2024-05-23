@@ -1,0 +1,1 @@
+from .candidate import Candidato, CANDIDATE_PARSER, CANDIDATE_FORMAT_INSTRUCTIONS
