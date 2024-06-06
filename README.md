@@ -2,6 +2,14 @@
 
 LLM-based system and the Prompts needed to get a generative AI to help you assess a candidate's experience of a job offer.
 
+## Index
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [How Score is Calculated](#how-score-is-calculated)
+- [Repository Structure](#repository-structure)
+- [Future Work](#future-work)
+
 ## Installation
 
 ```bash
@@ -41,6 +49,33 @@ We are using an exponential function as we consider that the an important factor
 
 Finally, to reward the loyalty of the candidate, we multiply the score by the number of months worked in the company.
 If the candidate has worked just a few months, the score will be lower than if he has worked for a longer period of time.
+
+## Repository Structure
+
+
+The repository is structured as follows:
+
+```
+├── setup.py <- Metadata about the package and instructions on how to install it
+│
+├── DESCRIPTION.md <- Description of the project for PyPI
+|
+├── misc <- Folder for miscellaneous files
+│
+├── notebooks <- Folder where jupyter notebooks are located. Development purposes
+│
+├── data
+│   └── example.py <- Example data for testing purposes
+|
+└── cvscout    <- Source code of the package
+    ├── llm    <- LLM related code
+    │   └── types.py <- LLM Object definitions
+    ├── models <- Data models
+    │   └── candidate.py <- Data model for the candidate
+    ├── utils  <- Utility functions
+    │   └── text.py <- Text processing functions
+    └── main   <- CVScout main class to be used
+```
 
 ## Future Work
 
